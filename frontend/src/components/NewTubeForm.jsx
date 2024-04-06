@@ -8,10 +8,11 @@ const initialValues = {
   email: "",
   channel: "",
   comment: "",
-  social:{
-    facebook:"",
-    twitter:""
+  social: {
+    facebook: "",
+    twitter: "",
   },
+  phone: ["", ""],
 };
 
 const onSubmit = (values) => {
@@ -44,7 +45,11 @@ const NewYoutubeForm = () => {
                 id="name"
                 name="name"
               />
-              <ErrorMessage name="name" component={"div"} className="text-danger" />
+              <ErrorMessage
+                name="name"
+                component={"div"}
+                className="text-danger"
+              />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
@@ -54,7 +59,11 @@ const NewYoutubeForm = () => {
                 id="email"
                 name="email"
               />
-              <ErrorMessage name="email" component={"div"} className="text-danger" />
+              <ErrorMessage
+                name="email"
+                component={"div"}
+                className="text-danger"
+              />
             </div>
 
             <div className="form-group">
@@ -65,7 +74,11 @@ const NewYoutubeForm = () => {
                 id="channel"
                 name="channel"
               />
-              <ErrorMessage name="channel" component={"div"} className="text-danger" />
+              <ErrorMessage
+                name="channel"
+                component={"div"}
+                className="text-danger"
+              />
             </div>
 
             <div className="form-group">
@@ -76,7 +89,11 @@ const NewYoutubeForm = () => {
                 name="comment"
                 id="comment"
               />
-              <ErrorMessage name="comment" component={"div"} className="text-danger" />
+              <ErrorMessage
+                name="comment"
+                component={"div"}
+                className="text-danger"
+              />
             </div>
 
             <div className="form-group">
@@ -99,7 +116,29 @@ const NewYoutubeForm = () => {
               />
             </div>
 
-            <button className="my-3" type="submit">Submit</button>
+            <div className="form-group">
+              <label htmlFor="channel">Phone 1</label>
+              <Field
+                type="text"
+                className="form-control"
+                id="Phone1"
+                name="phone[0]"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="channel">Phone 2</label>
+              <Field
+                type="text"
+                className="form-control"
+                id="Phone2"
+                name="phone[1]"
+              />
+            </div>
+
+            <button className="my-3" type="submit">
+              Submit
+            </button>
           </Form>
         </Formik>
       </Container>
