@@ -8,7 +8,19 @@ const initialValues = {
   email: "",
   channel: "",
 };
-
+const validate = (values) => {
+  let errors = {};
+  if (!values.name) {
+    errors.name = "Required";
+  }
+  if (!values.email) {
+    errors.email = "Required";
+  }
+  if (!values.channel) {
+    errors.channel = "Required";
+  }
+  return errors;
+};
 const onSubmit = (values) => {
   console.log("Form Values: ", values);
 };
@@ -18,9 +30,10 @@ const validationSchema = Yup.object({
     channel:Yup.string().required('*Please Enter Your channel')
 })
 
-const YoutubeForm = () => {
+const OldYoutubeForm = () => {
   const formik = useFormik({
     initialValues,
+    // validate,
     validationSchema,
     onSubmit,
   });
@@ -37,7 +50,9 @@ const YoutubeForm = () => {
             type="text"
             id="name"
             name="name"
-            {...formik.getFieldProps('name')}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.name}
           />
           {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
           <label htmlFor="email">Email</label>
@@ -45,7 +60,9 @@ const YoutubeForm = () => {
             type="email"
             id="email"
             name="email"
-            {...formik.getFieldProps('email')}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
           />
           {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
@@ -54,7 +71,9 @@ const YoutubeForm = () => {
             type="text"
             id="channel"
             name="channel"
-            {...formik.getFieldProps('channel')}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.channel}
           />
           {formik.touched.channel && formik.errors.channel ? <div>{formik.errors.channel}</div> : null}
 
@@ -65,4 +84,4 @@ const YoutubeForm = () => {
   );
 };
 
-export default YoutubeForm;
+export default OldYoutubeForm;
